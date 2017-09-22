@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="cheerio" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$USER_HOME$/Desktop/cheerio-master/cheerio-master/lib/cheerio.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$USER_HOME$/Desktop/cheerio-master/cheerio-master/lib/cheerio.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
