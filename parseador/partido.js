@@ -15,8 +15,8 @@ class Partido {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.arraycuotas1 = arraycuotas1;
-        this.arraycuotas2 = arraycuotas2;
         this.arraycuotasX = arraycuotasX;
+        this.arraycuotas2 = arraycuotas2;
     }
 
     /*

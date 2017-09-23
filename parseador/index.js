@@ -9,7 +9,7 @@
 //var fecha = 2017-09-22;
     var offcet = 30;
     var codigoGeneral;
-    var arrayCompeticiones = [];  //Array de objetos competicion. En cada posicion hay un objeto competicion
+    var arrayPartidos = [];  //Array de objetos competicion. En cada posicion hay un objeto competicion
     const Partido = require('./partido.js');
 
     request("http://www.elcomparador.com/html/contenido/mas_partidos.php?deporte=1&fecha=2017-09-23&offset=30", function (err, codigoGeneral) {
@@ -21,7 +21,7 @@
             var pos1 = competiciones[i].indexOf("titulo_comp");
             var posi1 = pos1 + 13; //offcet de caracters
             var competicion = competiciones[i].substr(posi1).split("</span>", 1); //COMPETICION
-            console.log("\n"+"COMPETICION--> " + competicion[0]);
+            //console.log("\n"+"COMPETICION--> " + competicion[0]);
 
             //Se parte el competiciones[1] en las <-Empieza la tabla del evento--> siendo cada evento un partido de la competicion con sus cuotas
 
@@ -33,7 +33,7 @@
                 //HORA EVENTO
                 var hora_pos = eventos_competicion[j].indexOf("hora");
                 var hora = eventos_competicion[j].substr(hora_pos + 6).split("</span>", 1);
-                console.log("HORA-> " + hora);
+                //console.log("HORA-> " + hora);
 
 
                 //EQUIPOS QUE LO DISPUTAN
@@ -49,14 +49,14 @@
                     var equipo1_aux1 = equipos_competicion[1].substr(equipo1_pos1).split("\">", 2);
                     var equipo1 = equipo1_aux1[0].split("</span>",2);
                     var equipo1 = equipo1[1];
-                    console.log("EQUIPO 1 -->" + equipo1);
+                    //console.log("EQUIPO 1 -->" + equipo1);
 
                 } else {
 
                     var equipo1_aux = equipos_competicion[1].substr(equipo1_pos + 5).split("\">", 2);
                     var equipo1 = equipo1_aux[1].split("</span>");
                     var equipo1 = equipo1[0];
-                    console.log("EQUIPO 1 -->" + equipo1);
+                    //console.log("EQUIPO 1 -->" + equipo1);
                 }
                 //EQUIPO 2
                 var equipo2_pos = equipos_competicion[2].indexOf("alt=\"");
@@ -69,14 +69,14 @@
 
                     var equipo2 = equipo2_aux1[0].split("</span>",2);
                     var equipo2 = equipo2[1];
-                    console.log("EQUIPO 2 -->" + equipo2);
+                    //console.log("EQUIPO 2 -->" + equipo2);
 
                 } else {
 
                     var equipo2_aux = equipos_competicion[2].substr(equipo2_pos).split("\">", 2);
                     var equipo2 = equipo2_aux[1].split("</span>");
                     var equipo2 = equipo2[0];
-                    console.log("EQUIPO 2 -->" + equipo2);
+                    //console.log("EQUIPO 2 -->" + equipo2);
                 }
 
                 //Análisis de las cuotas
@@ -101,7 +101,7 @@
                     }
                     arrayCuotas1.push(cuota);
                 }
-                console.log("CUOTAS 1 --> " + arrayCuotas1);
+                //console.log("CUOTAS 1 --> " + arrayCuotas1);
 
 
                 //APUESTAS X
@@ -121,7 +121,7 @@
                     }
                     arrayCuotasX.push(cuotaX);
                 }
-                console.log("CUOTAS x --> " + arrayCuotasX);
+                //console.log("CUOTAS x --> " + arrayCuotasX);
 
 
                 //APUESTAS 2
@@ -141,7 +141,9 @@
                     }
                     arrayCuotas2.push(cuota2);
                 }
-                console.log("CUOTAS 2 --> " + arrayCuotas2);
+                //console.log("CUOTAS 2 --> " + arrayCuotas2);
+                let partido = new Partido(competicion[0],hora[0], equipo1, equipo2, arrayCuotas1, arrayCuotasX, arrayCuotas2);
+                arrayPartidos.push(partido);
             }
 
             //Generacion del objeto partido
@@ -157,9 +159,12 @@
             console.log("CUOTAS 1 --> " + arrayCuotas1);
             */
             //console.log("Generando el partido.... ")
-            //let partido = new Partido(competicion[0],hora, equipo1, equipo2, arrayCuotas1, arrayCuotasX, arrayCuotas2);
-            //console.log(partido);
+
         }
+
+        //for(hola=0; hola<arrayPartidos.length; hola++) {
+            //console.log(arrayPartidos[4]);
+        //}
 
     });
 
