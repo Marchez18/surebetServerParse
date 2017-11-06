@@ -12,7 +12,7 @@
     var arrayPartidos = [];  //Array de objetos competicion. En cada posicion hay un objeto competicion
     const Partido = require('./partido.js');
 
-    request("http://www.elcomparador.com/html/contenido/mas_partidos.php?deporte=1&fecha=2017-09-23&offset=30", function (err, codigoGeneral) {
+    request("http://www.elcomparador.com/html/contenido/mas_partidos.php?deporte=1&fecha=2017-11-06&offset=", function (err, codigoGeneral) {
         //console.log(codigoGeneral);
         var competiciones = codigoGeneral.split("<!--EMPIEZA EL SEPARADOR-->")
         //console.log(competiciones.length); //Array con cada una de las ligas EMPIEZA EN 1
@@ -162,9 +162,9 @@
 
         }
 
-        //for(hola=0; hola<arrayPartidos.length; hola++) {
-            //console.log(arrayPartidos[4]);
-        //}
+        for(hola=0; hola<arrayPartidos.length; hola++) {
+            console.log(arrayPartidos[4]);
+        }
 
     });
 
